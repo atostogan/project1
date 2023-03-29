@@ -16,7 +16,27 @@ class StringParser:
         '''
         Takes a string and returns a dictionary with words quantity
         '''
-        words = self.str1.split()
+
+        list_of_punctuation_marks = [' ', ',', '.', '-']
+        words = []
+        punctuation_mark_count = 0
+
+        #Check if list contains punctuation marks. If so, split string at punctuation mark
+        for i in list_of_punctuation_marks:
+            if self.str1.find(i) != -1:
+                words = self.str1.split(i)
+                punctuation_mark_count += 1
+
+        #Check if punctuation marks were found. If not, try to split string at uppercase letters
+        if punctuation_mark_count == 0:
+            for i in range(len(self.str1)):
+                if self.str1[i].isupper() and i != 0:
+                    words.append(',' + self.str1[i])
+                else:
+                    words.append(self.str1[i])
+            words = (''.join(words)).split(',')
+
+        #Create a dictionary with words as a keys and their quantities as values
         words_quantity = {}
 
         for i in words:
@@ -29,10 +49,10 @@ class StringParser:
         Takes a string and returns the most frequent word
         '''
         words_quantity = self.count_words()
-        max_value = max(words_quantity.values())
+        max_frequency = max(words_quantity.values())
 
         for key, value in words_quantity.items():
-            if value == max_value:
-                max_key = key
+            if value == max_frequency:
+                most_frequent_word = key
 
-        return max_key
+        return most_frequent_word
