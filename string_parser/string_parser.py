@@ -29,11 +29,11 @@ class StringParser:
 
         #Check if punctuation marks were found. If not, try to split string at uppercase letters
         if punctuation_mark_count == 0:
-            for i in range(len(self.str1)):
-                if self.str1[i].isupper() and i != 0:
-                    words.append(',' + self.str1[i])
+            for index, letter in enumerate(self.str1):
+                if letter.isupper() and index != 0:
+                    words.append(',' + letter)
                 else:
-                    words.append(self.str1[i])
+                    words.append(letter)
             words = (''.join(words)).split(',')
 
         #Create a dictionary with words as a keys and their quantities as values
