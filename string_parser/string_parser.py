@@ -6,52 +6,43 @@ class StringParser:
     '''
     Class for parsing a string
     '''
-    def __init__(self, str1: str) -> None:
+    def __init__(self, string_to_parse: str) -> None:
         '''
         Inits StringParser with string as an argument
         '''
-        self.str1 = str1
+        self.string_to_parse = string_to_parse
 
     def count_words(self) -> dict:
         '''
         Takes a string and returns a dictionary with words quantity
         '''
 
-        list_of_punctuation_marks = [' ', ',', '.', '-']
-        words = []
-        punctuation_mark_count = 0
+        words_list = []
 
-        #Check if list contains punctuation marks. If so, split string at punctuation mark
-        for i in list_of_punctuation_marks:
-            if self.str1.find(i) != -1:
-                words = self.str1.split(i)
-                punctuation_mark_count += 1
-
-        #Check if punctuation marks were found. If not, try to split string at uppercase letters
-        if punctuation_mark_count == 0:
-            for index, letter in enumerate(self.str1):
-                if letter.isupper() and index != 0:
-                    words.append(',' + letter)
-                else:
-                    words.append(letter)
-            words = (''.join(words)).split(',')
+        #Split string into words
+        for i in self.string_to_parse:
+            if i in [',', '.', '/', '(', ')']:
+                pass
+            else:
+                words_list.append(i)
+        words_list = (''.join(words_list)).split()
 
         #Create a dictionary with words as a keys and their quantities as values
-        words_quantity = {}
+        word_quantity_dict = {}
 
-        for i in words:
-            words_quantity[i] = words.count(i)
+        for i in words_list:
+            word_quantity_dict[i] = words_list.count(i)
 
-        return words_quantity
+        return word_quantity_dict
 
     def get_most_frequent_word(self) -> str:
         '''
         Takes a string and returns the most frequent word
         '''
-        words_quantity = self.count_words()
-        max_frequency = max(words_quantity.values())
+        word_quantity_dict = self.count_words()
+        max_frequency = max(word_quantity_dict.values())
 
-        for key, value in words_quantity.items():
+        for key, value in word_quantity_dict.items():
             if value == max_frequency:
                 most_frequent_word = key
 

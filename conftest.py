@@ -1,7 +1,8 @@
 import pytest
 
-pytest.string_with_spaces = 'hi hi hi hello hello hey hey hey hey'
-pytest.string_with_comas = 'hi,hi,hi,hello,hello,hey,hey,hey,hey'
-pytest.string_with_dots = 'hi.hi.hi.hello.hello.hey.hey.hey.hey'
-pytest.string_with_dashes = 'hi-hi-hi-hello-hello-hey-hey-hey-hey'
-pytest.string_with_camel_case = 'HiHiHiHelloHelloHeyHeyHeyHey'
+pytest.string_with_spaces = 'Variables may subsequently be rebound at any time to any object'
+pytest.string_with_comas_dots = 'It has list comprehensions, and dictionaries. Sets, and generator expressions'
+pytest.string_with_dashes = 'Python is a high-level, general-purpose programming language which is beginner-oriented'
+pytest.string_quote_parentheses_new_line = '''Python's development is conducted largely through the Python Enhancement
+                                        Proposal (PEP) process, the primary mechanism for proposing major features'''
+
