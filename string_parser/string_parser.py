@@ -19,13 +19,41 @@ class StringParser:
 
         words_list = []
 
-        #Split string into words
+        #Split string into words, solution #1
+        # for i in self.string_to_parse:
+        #     if i in [',', '.', '/', '(', ')']:
+        #         pass
+        #     else:
+        #         words_list.append(i)
+        # words_list = (''.join(words_list)).split()
+
+        # Split string into words, solution #2
+        # for i in self.string_to_parse:
+        #     if i not in [',', '.', '/', '(', ')']:
+        #         words_list.append(i)
+        #
+        # words_list = (''.join(words_list)).split()
+
+        # Split string into words, solution #3
+        # for i in self.string_to_parse:
+        #     if i in [',', '.', '/', '(', ')']:
+        #         continue
+        #     else:
+        #         words_list.append(i)
+        #
+        # words_list = (''.join(words_list)).split()
+
+        # Split string into words, solution #4
+        string_after_parsing = ''
         for i in self.string_to_parse:
             if i in [',', '.', '/', '(', ')']:
-                pass
+                continue
             else:
-                words_list.append(i)
-        words_list = (''.join(words_list)).split()
+                string_after_parsing = string_after_parsing + i
+
+        words_list = string_after_parsing.split()
+
+
 
         #Create a dictionary with words as a keys and their quantities as values
         word_quantity_dict = {}
